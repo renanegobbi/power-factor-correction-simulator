@@ -1,0 +1,387 @@
+﻿body {
+    margin-bottom: 60px;
+}
+
+    body > header > section > nav {
+        justify-content: normal !important;
+    }
+
+/* Navbar */
+nav.navbar {
+    background-color: #344e6b;
+}
+
+#navbarNav li a {
+    font-size: 22px;
+}
+
+#navbarNav li:hover {
+    color: darkgoldenrod;
+    background-color: darkgoldenrod;
+}
+
+/* Menu lateral */
+.main_container {
+    position: fixed;
+    left: 0;
+    width: 16%;
+    height: 100%;
+    background: #f7f7f7;
+    transition: all 0.3s ease;
+}
+
+#dashboard-menu {
+    list-style: none;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-bottom: 0;
+    position: fixed;
+    left: 0;
+    width: 16%;
+    height: 100%;
+    background: #f7f7f7;
+    transition: all 0.3s ease;
+    position: fixed;
+    margin-top: 70px;
+}
+
+    #dashboard-menu li {
+        border-bottom: 2px solid #dae1e8;
+        box-shadow: 0 2px 1px -1px #FFFFFF;
+    }
+
+        #dashboard-menu li i {
+            font-size: 30px;
+        }
+
+        #dashboard-menu li a,
+        .home {
+            display: flex;
+            padding: 20px 14px 20px 14px;
+            color: #6e829b;
+            outline: 0px;
+            line-height: 21px;
+            text-decoration: none;
+            cursor: pointer;
+            align-items: center;
+            font-size: 22px;
+            font-weight: 500;
+        }
+
+            #dashboard-menu li a span {
+                margin-left: 15%;
+            }
+
+    #dashboard-menu > li > a:hover,
+    #dashboard-menu > li > i:hover {
+        background-color: darkgoldenrod;
+        color: white;
+    }
+
+/*Menu-principal*/
+.hero-unit {
+    margin-top: 80px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    color: #6e829b;
+}
+
+.home {
+    color: #344e6b;
+    font-weight: bold;
+    cursor: text;
+}
+
+/* Footer */
+.footer {
+    position: fixed;
+    bottom: 0px;
+    width: 84%;
+    margin-left: auto;
+    background-color: white;
+}
+
+/* Contato */
+span.contato-nome, span.contato-email {
+    font-weight: bold;
+}
+
+.contato {
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+    .contato > div:nth-child(2n+1) {
+        margin-top: 1.2rem;
+    }
+
+/*Dados*/
+#tabela-dados a {
+    color: #6e829b;
+    font-size: 18px;
+}
+
+#enviar {
+    height: 40px;
+}
+
+.row_search {
+    margin-top: 25px;
+}
+
+#upload {
+    color: black;
+    background-color: #f7f7f7 !important;
+    border-color: #f7f7f7;
+}
+
+#download-template {
+    color: black;
+    background-color: #f7f7f7 !important;
+    border-color: #f7f7f7;
+}
+
+thead {
+    background-color: #f7f7f7;
+}
+
+.page-link {
+    color: #344e6b !important;
+}
+
+.page-item.active .page-link {
+    z-index: 1;
+    color: white !important;
+    background-color: #344e6b !important;
+    border-color: navy !important;
+}
+
+/*Info*/
+.info {
+    font-size: 19px;
+    margin-left: 10px;
+}
+
+.img-projeto {
+    width: 45%;
+    display: block;
+    margin-left: 25%;
+    margin-right: auto;
+}
+
+.titulo_projeto {
+    margin-left: 10px;
+}
+
+/*Gráfico*/
+#grafico {
+    height: 500px !important;
+}
+
+@media screen and (max-width: 1100px) {
+
+    .col-2 {
+        max-width: 10.5%;
+    }
+
+    .col-10 {
+        max-width: 89.5%;
+    }
+
+    .main_container {
+        width: 60px;
+    }
+
+    #dashboard-menu {
+        width: 0px;
+        padding-left: 0px;
+    }
+
+        #dashboard-menu li a {
+            margin-left: 0px;
+            padding: 20px 45px 20px 14px;
+        }
+
+        #dashboard-menu li span:nth-child(2) {
+            display: none;
+        }
+
+    .home {
+        display: none;
+    }
+
+    .footer {
+        width: 94.0%
+    }
+}
+
+thead {
+    background - color: #344e6b;
+}
+
+#tbtDadosUpload > thead > tr > th, #example2 > thead > tr > th {
+    color: white;
+    background-color: #344e6b !important;
+}
+
+.table - striped > tbody > tr: nth - child(odd) > td,
+.table - striped > tbody > tr: nth - child(odd) > th {
+    background - color: #f7f7f7; /*Choose your own color here*/
+}
+
+/* Arrow To Top */
+
+html {
+    scroll-behavior: smooth;
+}
+
+.to-top {
+    background: white;
+    position: fixed;
+    bottom: 16px;
+    right: 32px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    color: #1f1f1f;
+    opacity: 0;
+    pointer-events: none;
+    transition: all .4s;
+    border: 2px solid black;
+}
+
+    .to-top.active {
+        bottom: 32px;
+        pointer-events: auto;
+        opacity: 1;
+    }
+
+a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+/*Select2*/
+.select2-results__option {
+    border-bottom: 1px dashed #ccc;
+    font-size: 15px;
+}
+
+    .select2-results__option:last-child {
+        border-bottom: none;
+    }
+
+    .select2-results__option:first-child {
+        border-top: 1px dashed #ccc;
+    }
+
+.select2-container .select2-selection--single {
+    height: calc(1.5em + .75rem + 2px) !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 35px !important;
+}
+
+/*Select2 - Fim*/
+#btn-refresh {
+    background-color: #344e6b;
+    border-color: #344e6b;
+}
+
+.btn-colvis {
+    background-color: #344e6b !important;
+    color: white !important;
+}
+
+.btn-colvis {
+    border-bottom-left-radius: 50px !important;
+    border-top-left-radius: .3rem !important;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+    background-color: #344e6b !important;
+}
+
+/*Datepicker*/
+body > div.datepicker.datepicker-dropdown.dropdown-menu.datepicker-orient-right.datepicker-orient-top {
+    padding: 10px;
+}
+
+body > div.datepicker.datepicker-dropdown.dropdown-menu.datepicker-orient-right.datepicker-orient-bottom {
+    padding: 10px;
+}
+
+@media (max-width: 992px) {
+    a.navbar-brand.image-teste {
+        display: none;
+    }
+
+    #navbarNav > ul {
+        margin-top: 0.5rem !important;
+    }
+
+    #tblDadosResultado_wrapper > div:nth-child(1) > div.col-md-9.d-flex.justify-content-end > div.dt-buttons.btn-group.flex-wrap {
+        height: 58%;
+    }
+
+    #btn-refresh {
+        height: 37px;
+    }
+}
+
+/*Button Restore*/
+#tbtDadosUpload_wrapper > div:nth-child(1) > div.col-md-9.d-flex.justify-content-end > div > div > div.dt-button-collection > div > a.dt-button.dropdown-item.buttons-colvisRestore {
+    background-color: #344e6b;
+    color: white;
+}
+
+/*Checkbox*/
+#checkTemBancoCapacitor {
+    scale: 2;
+    background-color: blue !important;
+}
+
+    #checkTemBancoCapacitor:checked {
+        background-color: blue !important;
+    }
+
+/*seção commo usar*/
+#secaoComoUsar {
+    background-color: #344e6b;
+}
+
+progress {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 100%;
+    height: 30px;
+    border-radius: 0;
+}
+
+    progress::-webkit-progress-bar {
+        background-color: #f7f7f7; /* Cor do fundo da barra */
+    }
+
+    progress::-webkit-progress-value {
+        background-color: #28a745; /* Cor da barra de progresso */
+    }
+
+    progress::-moz-progress-bar {
+        background-color: #28a745; /* Cor da barra de progresso no Firefox */
+    }
+
+    ul.custom-list {
+        list-style-type: none; /* Remove os marcadores padrão */
+    }
+
+    ul.custom-list li::before {
+        content: "• "; /* Adiciona um ponto antes do texto */
+        color: black; /* Cor do ponto */
+        font-size: 20px; /* Tamanho do ponto */
+        margin-right: 8px; /* Espaçamento entre o ponto e o texto */
+    }

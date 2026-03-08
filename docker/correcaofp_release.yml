@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+    
+  api-webapplication:
+    image: correcaofp
+    container_name: correcaofpcontainer 
+    build: 
+        context: .
+        dockerfile: Dockerfile_release
+    restart: always
+    ports:
+        - "5200:80"

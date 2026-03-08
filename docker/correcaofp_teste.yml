@@ -1,0 +1,28 @@
+version: "3"
+
+volumes:
+    sqlvolume:
+
+networks:
+    appmvc:
+        driver:
+            bridge
+
+services:
+    
+    app-mvc:
+        image: renanio/correcaofpteste:1.1
+        container_name: correcaofpcontainerteste1
+        networks:
+            - appmvc        
+        build: 
+            context: ../src
+            dockerfile: ./CorrecaoFp.App/Dockerfile_teste
+        restart: always
+        ports:
+            - "5200:80"
+            - "5311:443"
+        environment: 
+            - ASPNETCORE_ENVIRONMENT=Development
+ 
+

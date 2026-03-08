@@ -1,0 +1,10 @@
+﻿@using CorrecaoFp.App.Helpers;
+@model CorrecaoFp.App.ViewModels.ConfiguracoesViewModel
+
+<div id="estagiosBancoAutomatico">
+    @{
+        @Html.Raw(this.ListarEstagios(Model.QuantidadeLinhas, Model.QuantidadeColunasUltimaLinha, Model.EstagioResumo, Model.Capacitores))
+    }
+</div>
+
+

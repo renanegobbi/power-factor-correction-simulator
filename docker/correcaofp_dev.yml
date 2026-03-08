@@ -1,0 +1,28 @@
+version: "3"
+
+volumes:
+    sqlvolume:
+
+networks:
+    appmvc:
+        driver:
+            bridge
+
+services:
+    
+    app-mvc:
+        image: renanio/correcaofpimage:1.0
+        container_name: correcaofpcontainer:1.0
+        networks:
+            - appmvc        
+        build: 
+            context: ../src
+            dockerfile: CorrecaoFp.App/Dockerfile_dev
+        restart: always
+        ports:
+            - "5253:80"
+            - "5300:443"
+        environment: 
+            - ASPNETCORE_ENVIRONMENT=Development
+ 
+

@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<UserSecretsId>febfc7f7-1d21-4db7-977e-4694025c44da</UserSecretsId>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+		<DockerfileContext>..\..</DockerfileContext>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Include="wwwroot\arquivos\template\Template.xlsx" />
+		<EmbeddedResource Include="wwwroot\images\Teste\Template.xlsx" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.17" />
+		<PackageReference Include="Microsoft.EntityframeworkCore.SqlServer" Version="5.0.17" />
+		<PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="5.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.17" />
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.18.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\CorrecaoFp.Business\CorrecaoFp.Business.csproj" />
+		<ProjectReference Include="..\CorrecaoFp.Data\CorrecaoFp.Data.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="ControladorFP.db">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="Dockerfile">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="wwwroot\videos\" />
+	</ItemGroup>
+	
+</Project>

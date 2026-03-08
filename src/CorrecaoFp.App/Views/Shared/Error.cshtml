@@ -1,0 +1,20 @@
+﻿@model CorrecaoFp.App.ViewModels.ErrorViewModel
+
+@{
+    ViewData["Title"] = "Ocorreu um erro";
+}
+
+@{ if (Model == null)
+    {
+
+        <h3 class="mt-2 mb-4 p-2 titulo-secao">Ooops! Ocorreu um erro, mas não se preocupe. Nosso time será avisado e iremos corrigir em breve!</h3>
+    }
+    else
+    {
+        <div class="mt-4">
+            <br>
+            <h1 class="mt-5 mb-4 p-2 ">@Html.Raw(Model.Titulo)</h1>
+        </div>
+        <h2 class="text-danger">@Html.Raw(Model.Mensagem)</h2>
+    }
+}

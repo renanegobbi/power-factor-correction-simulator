@@ -1,0 +1,209 @@
+﻿@using CorrecaoFp.App.Helpers;
+@using CorrecaoFp.Business.Enums;
+@model CorrecaoFp.App.ViewModels.MedicaoViewModel
+
+@{
+    ViewData["Title"] = "Dados";
+}
+
+@section Javascript
+{
+    <script src="~/lib/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/lib/datatables/dist/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/popper.min.js"></script>
+    <script src="~/js/views/dados.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.11.3/af-2.3.7/b-2.0.1/b-colvis-2.0.1/b-html5-2.0.1/b-print-2.0.1/datatables.min.js"></script>
+    <script src="~/lib/jquery.inputmask.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/4.0.9/jquery.inputmask.bundle.min.js"></script>
+}
+
+<div class="hero-unit">
+    <h2 class="mt-2 mb-4 p-2 titulo-secao">Dados</h2>
+</div>
+
+<vc:summary></vc:summary>
+
+<div class="col-sm-12 mr-auto ml-auto border pt-3 mb-3">
+    <form enctype="application/x-www-form-urlencoded" method="post" asp-controller="Dados" asp-action="DownloadTemplate">
+        <div class="form-group">
+            <button type="submit" name="download" value="download" id="download-template" class="btn btn-block btn-dark"><i class="fa fa-fw fa-download"></i> Download Template.xlsx</button>
+        </div>
+    </form>
+</div>
+
+<div class="col-sm-12 mr-auto ml-auto border pt-3 mb-3">
+    <form enctype="multipart/form-data" method="post" asp-controller="Dados" asp-action="UploadArquivo" id="uploadForm">
+        <div class="form-group">
+            <label><strong>Upload Arquivo</strong> | Tamanho máximo do arquivo: 50 MB</label>
+            <div class="custom-file">
+                <input type="file" name="ArquivoUpload" multiple class="custom-file-input form-control" id="customFile">
+                <label class="custom-file-label" for="customFile">Escolha o arquivo</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" name="upload" value="upload" id="upload" class="btn btn-block btn-dark"><i class="fa fa-fw fa-upload"></i> Upload Template.xlsx</button>
+        </div>
+    </form>
+</div>
+
+<div class="col-xs-12">
+    <table id="tbtDadosUpload" class="display table table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Data Início</th>
+                <th>Data Fim</th>
+                <th>Pot. Ativa</th>
+                <th>Pot. Reativa</th>
+                <th>Pot. Aparente</th>
+                <th>Fator de Potência</th>
+                <th>Tipo de FP</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+<hr />
+
+<div class="card mb-3">
+    <div class="card-header" id="iCardHeader" style="background-color: #344e6b; color:white">
+        <b>FILTRO</b>
+    </div>
+    <div class="row pt-3 pr-3 pl-3" id="filtros">
+        <div class="col-sm-12 col-md-3 form-group datapicker">
+            <label class="control-label">Data Início <i id="infoDataInicio" class="fa-regular fa-circle-question" aria-hidden="true" style="color:#344e6b" data-toggle="popover"></i></label>
+            <div class="input-group date" data-provide="datepicker">
+                <input type="text" class="form-control datepicker campo-data" id="iProcurarDataInicio">
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-3 form-group datapicker">
+            <label class="control-label">Data Fim <i id="infoDataFim" class="fa-regular fa-circle-question" aria-hidden="true" style="color:#344e6b" data-toggle="popover"></i></label>
+            <div class="input-group date" data-provide="datepicker">
+                <input type="text" class="form-control campo-data" id="iProcurarDataFim">
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-th"></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-3">
+            <div class="form-group">
+                <label class="control-label">FP <i id="infoFP" class="fa-regular fa-circle-question" aria-hidden="true" style="color:#344e6b" data-toggle="popover"></i></label>
+                <input type="text" class="form-control somenteNumero fatorPotencia" placeholder="" id="iProcurarFP">
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-3">
+            <div class="form-group">
+                <label class="control-label">Tipo de FP atual <i id="infoIndMedia" class="fa-regular fa-circle-question" aria-hidden="true" style="color:#344e6b" data-toggle="popover"></i></label>
+                <select id="sProcurarIndMedia" name="sProcurarIndMedia" class="form-control" style="width:100%;">
+                    <option value="" selected>Todos</option>
+                    <option value="1">Capacitivo</option>
+                    <option value="2">Indutivo</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="row ml-1">
+        <div class="panel-footer mb-3 ml-1" style="border-radius: 0;">
+            <button type="submit" class="btn btn-sm ml-2" id="btn-filtrar" style="background-color: #344e6b; color:white">
+                <i class="fa fa-search mr-xs"></i>  Filtrar
+            </button>
+        </div>
+        <div class="panel-footer mb-3 ml-0" style="border-radius: 0;">
+            <button type="submit" class="btn btn-sm ml-2" id="btn-limpar" style="background-color: #344e6b; color:white">
+                <i class="fa fa-eraser mr-xs"></i>  Limpar
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="card mb-3 mt-3">
+    <div class="row">
+        <div class="col-6">
+            <div class="form-check mt-2 mb-4">
+                <div>
+                    <label class="form-check-label" for="checkTemBancoCapacitor">Tem banco de capacitor?</label>
+                </div>
+                <div>
+                    <input type="checkbox" class="form-check-input ml-2 mt-3" id="checkTemBancoCapacitor">
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group mt-2 mb-4 mr-3" id="secaoSelectOptionsModoCompensacaoComBancoCapacitor">
+                <label class="control-label">Estratégia de compensação</label>
+                <select id="sModoCompensacao" name="sModoCompensacao" class="form-control" style="width:100%;">
+                    @{
+                        @Html.Raw(this.SelectOptionsModoCompensacaoComBancoCapacitor(Model.ModoCompensacao, ModoCompensacaoOrdenarPor.Sequencial_Ascendente))
+                    }
+                </select>
+            </div>
+            <div class="form-group mt-2 mb-4 mr-3" id="secaoSelectOptionsModoCompensacaoSemBancoCapacitor">
+                <label class="control-label">Estratégia de compensação</label>
+                <select id="sModoCompensacaoSemBancoCapacitor" name="sModoCompensacaoSemBancoCapacitor" class="form-control" style="width:100%;">
+                    @{
+                        @Html.Raw(this.SelectOptionsModoCompensacaoSemBancoCapacitor(Model.ModoCompensacao, ModoCompensacaoOrdenarPor.Sequencial_Ascendente))
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card-header pl-0 pb-1 mb-3">
+    <h3 class="card-title titulo-bloco legenda-tabela pl-1">Resultado</h3>
+</div>
+
+<div class="card mb-3 mt-3">
+    <div class="row ml-1 mr-1 mt-1 mb-1">
+        <div class="col-12 col-md-3 mb-2 mt-1">
+            <b>Total de medições <i id="info-Resultado-TotalMedicoes" class="fa-regular fa-circle-question" aria-hidden="true" style="color:#344e6b" data-toggle="popover"></i></b><br>
+            <div class="col-12 pl-0"><span id="totalMedicoes"></span></div>
+        </div>
+        <div class="col-12 col-md-3 mb-2 mt-1">
+            <b>Candidatos a ERE <i id="info-Resultado-CandidatosEre" class="fa-regular fa-circle-question" aria-hidden="true" style="color:#344e6b" data-toggle="popover"></i></b><br>
+            <div class="col-12 pl-0"><span id="totalEre"></span></div>
+        </div>
+        <div class="col-12 col-md-3 mb-2 mt-1">
+            <b>FP corrigidos <i id="info-Resultado-FpCorrigidos" class="fa-regular fa-circle-question" aria-hidden="true" style="color:#344e6b" data-toggle="popover"></i></b><br>
+            <div class="col-12 pl-0"><span id="qtdFpCorrigido"></span></div>
+        </div>
+        <div class="col-12 col-md-3 mb-2 mt-1">
+            <b>FP não corrigidos <i id="info-Resultado-FpNaoCorrigidos" class="fa-regular fa-circle-question" aria-hidden="true" style="color:#344e6b" data-toggle="popover"></i></b><br>
+            <div class="col-12 pl-0"><span id="qtdFpNaoCorrigido"></span></div>
+        </div>
+    </div>
+</div>
+
+<div class="col-xs-12">
+    <table class="display table table-striped" id="tblDadosResultado" width="100%">
+        <thead>
+            <tr>
+                <th class="text-center col-1"><i id="info-Tabela-Resultado-DataInicio" class="fa-regular fa-circle-question" aria-hidden="true" style="color:#344e6b" data-toggle="popover"></i></th>
+                <th class="text-center col-1"><i id="info-Tabela-Resultado-DataFim" class="fa-regular fa-circle-question" aria-hidden="true" style="color:#344e6b" data-toggle="popover"></i></th>
+                <th class="text-center col-1"><i id="info-Tabela-Resultado-FpAtual" class="fa-regular fa-circle-question" aria-hidden="true" style="color:#344e6b" data-toggle="popover"></i></th>
+                <th class="text-center col-2"><i id="info-Tabela-Resultado-TipoFpAtual" class="fa-regular fa-circle-question" aria-hidden="true" style="color:#344e6b" data-toggle="popover"></i></th>
+                <th class="text-center col-1"><i id="info-Tabela-Resultado-Acao" class="fa-regular fa-circle-question" aria-hidden="true" style="color:#344e6b" data-toggle="popover"></i></th>
+                <th class="text-center col-2"><i id="info-Tabela-Resultado-QcNecessario" class="fa-regular fa-circle-question" aria-hidden="true" style="color:#344e6b" data-toggle="popover"></i></th>
+                <th class="text-center col-1"><i id="info-Tabela-Resultado-Estagios" class="fa-regular fa-circle-question" aria-hidden="true" style="color:#344e6b" data-toggle="popover"></i></th>
+                <th class="text-center col-1"><i id="info-Tabela-Resultado-FpCorrigido" class="fa-regular fa-circle-question" aria-hidden="true" style="color:#344e6b" data-toggle="popover"></i></th>
+                <th class="text-center col-2"><i id="info-Tabela-Resultado-TipoFpCorrigido" class="fa-regular fa-circle-question" aria-hidden="true" style="color:#344e6b" data-toggle="popover"></i></th>
+            </tr>
+            <tr>
+                <th class="text-center col-1">Data Início</th>
+                <th class="text-center col-1">Data Fim</th>
+                <th class="text-center col-1">FP atual</th>
+                <th class="text-center col-2">Tipo de FP atual</th>
+                <th class="text-center col-1">Ação</th>
+                <th class="text-center col-2">Qc Necessário (kVAr)</th>
+                <th class="text-center col-1">Estágios (kVAr)</th>
+                <th class="text-center col-1">FP Corrigido</th>
+                <th class="text-center col-2">Tipo de FP Corrigido</th>
+            </tr>
+        </thead>
+    </table>
+</div>

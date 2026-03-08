@@ -1,0 +1,114 @@
+﻿@using CorrecaoFp.App.Helpers;
+@using CorrecaoFp.Business.Enums;
+@model CorrecaoFp.App.ViewModels.ConfiguracoesViewModel
+
+@{
+    ViewData["Title"] = "Configurações";
+}
+
+@section Javascript
+    {
+    <script src="~/js/views/configuracoes.js"></script>
+}
+
+<div class="hero-unit">
+    <h2 class="mt-2 mb-4 p-2 titulo-secao">Configurações</h2>
+</div>
+
+<vc:summary></vc:summary>
+
+<form enctype="application/x-www-form-urlencoded" method="post" asp-controller="Configuracao" asp-action="AtualizarEstagios">
+    <div class="card mb-3">
+
+        <div class="card-header" id="iCardHeader" style="background-color: #344e6b; color:white">
+            <h5 class="mb-0"><b>Parametrizações</b></h5>
+        </div>
+
+        <div class="card m-3">
+            <div class="card-header" id="iCardHeader">
+                <b>Esquema de Ligação das Entradas</b>
+            </div>
+            <div class="row pl-3 pr-3 pb-0 pt-3" id="esquemaDeLigacaoDasEntradas">
+                <div class="col-sm-12 col-md-3">
+                    <div class="form-group">
+                        <label class="control-label">Tensão de Linha (V) <i id="infoTensaoLinha" class="fa-regular fa-circle-question" aria-hidden="true" style="color:#344e6b" data-toggle="popover"></i></label>
+                        <input type="text" class="form-control somenteNumero" placeholder="" id="iTensaoLinha" name="TensaoLinha" value="@Model?.TensaoLinha">
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-3">
+                    <div class="form-group">
+                        <label class="control-label">Relação TC <i id="infoRelacaoTc" class="fa-regular fa-circle-question" aria-hidden="true" style="color:#344e6b" data-toggle="popover"></i></label>
+                        <input type="text" class="form-control somenteNumero" placeholder="" id="iRelacaoTc" name="RelacaoTc" value="@Model?.RelacaoTc">
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-3">
+                    <div class="form-group">
+                        <label class="control-label">Relação C/K <i id="infoRelacaoCk" class="fa-regular fa-circle-question" aria-hidden="true" style="color:#344e6b" data-toggle="popover"></i></label>
+                        <input type="text" class="form-control somenteNumero" placeholder="" id="iRelacaoCk" name="RelacaoTc" value="@Model.RelacaoCk" disabled>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card m-3">
+            <div class="card-header" id="iCardHeader">
+                <b>Bancos Fixos</b>
+            </div>
+            <div class="row pl-3 pr-3 pb-0 pt-3">
+                <div class="col-sm-12 col-md-3">
+                    <div class="form-group">
+                        <label class="control-label">Quantidade</label>
+                        @{
+                            var lstQuantidadeEstagiosFixos = new List<SelectListItem>();
+                            string textoEstagioFixo;
+                            foreach (var item in new[] { "Nenhum", "1", "2", "3", "4" })
+                            {
+                                textoEstagioFixo = (item == "1" || item == "Nenhum") ? " estágio " : " estágios";
+                                lstQuantidadeEstagiosFixos.Add(new SelectListItem { Value = (item == "Nenhum") ? "0" : item, Text = item + textoEstagioFixo, Selected = /*"12"*/Model.sQuantidadeEstagiosFixos.ToString() == item });
+                            }
+                        }
+                        <select asp-items="lstQuantidadeEstagiosFixos" name="sQuantidadeEstagiosFixos" id="sQuantidadeEstagiosFixos" class="form-control" style="width:100%;"></select>
+                    </div>
+                </div>
+            </div>
+
+            <partial name="_ListarEstagiosFixos" />
+
+        </div>
+
+        <div class="card m-3">
+            <div class="card-header" id="iCardHeader">
+                <b>Bancos Automáticos</b>
+            </div>
+            <div class="row pl-3 pr-3 pb-0 pt-3">
+                <div class="col-sm-12 col-md-3">
+                    <div class="form-group">
+                        <label class="control-label">Quantidade</label>
+                        @{
+                            var lstQuantidadeEstagios = new List<SelectListItem>();
+                            string textoEstagio;
+                            foreach (var item in new[] { "Nenhum", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24" })
+                            {
+                                textoEstagio = (item == "1" || item == "Nenhum") ? " estágio " : " estágios";
+                                lstQuantidadeEstagios.Add(new SelectListItem { Value = (item == "Nenhum") ? "0" : item, Text = item + textoEstagio, Selected = /*"12"*/Model.sQuantidadeEstagios.ToString() == item });
+                            }
+                        }
+                        <select asp-items="lstQuantidadeEstagios" name="sQuantidadeEstagios" id="sQuantidadeEstagios" class="form-control" style="width:100%;"></select>
+                    </div>
+                </div>
+            </div>
+
+            <partial name="_ListarEstagiosAutomaticos" />
+
+        </div>
+
+        <div class="mb-3 ml-3 pr-3 pb-0 pt-0" style="border-radius: 0;">
+            <button type="submit" class="btn btn-md btn-success" id="btn-cadastrar">
+                <i class="fa fa-plus mr-xs"></i> <span class="">Salvar</span>
+            </button>
+        </div>
+
+    </div>
+</form>
+
+

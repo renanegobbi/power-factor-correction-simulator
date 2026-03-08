@@ -1,0 +1,417 @@
+﻿@{
+    ViewData["Title"] = "Documentação";
+}
+
+@section Javascript
+{
+    <script src="~/js/views/documentacao.js"></script>
+}
+
+<div class="hero-unit">
+    <h2 class="mt-2 mb-4 p-2 titulo-secao">Documentação <i class="fa fa-fw fa-book"></i></h2>
+</div>
+
+<vc:summary></vc:summary>
+
+<div class="col-sm-12" style="padding: 0px;">
+    <div class="" id="collapseExample">
+        <div class="card card-body mb-3">
+
+            <!-- Sumário -->
+            <h3>Sumário</h3>
+            <ul class="list-group">
+                <li class=" font-weight-bold text-dark"><a href="#tituloVisaoGeral" class="text-dark">1. Visão Geral</a></li>
+            </ul>
+            <ul class="list-group">
+                <li class=" font-weight-bold text-dark"><a href="#tituloPaginaDeDados" class="text-dark">2. Página de Dados</a></li>
+                <ul class="list-group">
+                    <li class="ml-4"><a href="#subtituloDownloadTemplate" class="text-dark">2.1 Download Template</a></li>
+                    <li class="ml-4"><a href="#subtituloUploadTemplate" class="text-dark">2.2 Upload Template</a></li>
+                    <li class="ml-4"><a href="#subtituloTabelaDeDadosImportados" class="text-dark">2.3 Tabela de Dados Importados</a></li>
+                    <li class="ml-4"><a href="#subtituloFiltro" class="text-dark">2.4 Filtro</a></li>
+                    <li class="ml-4"><a href="#subtituloEstrategiaDeCompensacao" class="text-dark">2.5 Estratégia de Compensação</a></li>
+                    <li class="ml-4"><a href="#subtituloTabelaDeResultado" class="text-dark">2.6 Tabela de Resultado</a></li>
+                    <li class="ml-4"><a href="#subtituloVideoExplicativoPaginaDados" class="text-dark">2.7 Vídeo Explicativo</a></li>
+                </ul>
+            </ul>
+            <ul class="list-group">
+                <li class=" font-weight-bold text-dark"><a href="#tituloParametrizacao" class="text-dark">3. Página de Configurações</a></li>
+                <ul class="list-group">
+                    <li class="ml-4"><a href="#subtituloEsquemaLigacaoDasEntradas" class="text-dark">3.1 Esquema de Ligação das Entradas</a></li>
+                    <li class="ml-4"><a href="#subtituloBancosFixos" class="text-dark">3.2 Bancos Fixos</a></li>
+                    <li class="ml-4"><a href="#subtituloBancosAutomaticos" class="text-dark">3.3 Bancos Automáticos</a></li>
+                    <li class="ml-4"><a href="#subtituloVideoExplicativoPaginaConfiguracoes" class="text-dark">3.4 Vídeo Explicativo</a></li>
+                </ul>
+            </ul>
+            <ul class="list-group">
+                <li class=" font-weight-bold text-dark"><a href="#tituloReferencias" class="text-dark">4. Referências</a></li>
+            </ul>
+            <br />
+            <div><hr /></div>
+
+            <br />
+            <!-- 1. Página de Dados-->
+            <h3 id="tituloVisaoGeral">1. Visão Geral</h3>
+            <br>
+            <p class="text-justify">
+                Assim como em muitos países, a legislação brasileira estabelece o limite mínimo de fator de potência
+                para períodos determinados da semana, sob pena de cobrança de faturamento de energia reativa excedente.
+                Entretanto, para tais consumidores, são frequentes as variações que desequilibram o fator de potência,
+                e mesmo se valendo de equipamentos auxiliadores, ainda assim são penalizados mensalmente.
+                Diante disso, o objetivo desta aplicação web é permitir que diferentes usuários simulem diversos
+                cenários de combinações de entradas (tensão de linha, transformador de corrente, estratégia de
+                compensação e capacitores) para visualizar a melhor solução e adequar o fator de potência,
+                com base nos dados fornecidos por eles.
+            </p>
+            <p class="text-justify">
+                A imagem abaixo ilustra um exemplo de uso prático, destacando como a solução pode ser aplicada em um cenário real.
+                Esta imagem resume visualmente o processo e os benefícios, facilitando a compreensão rápida e eficaz do caso de uso apresentado.
+            </p>
+            <img src="~/images/Documentacao/GraphicalAbstract_Pt.png" class="img-fluid rounded mx-auto d-block" alt="Exemplo de uso da aplicação web para correção do fator de potência de um consumidor com geração fotovoltaica e banco de capacitores">
+            <br><br>
+            <!-- 2. Página de Dados-->
+            <h3 id="tituloPaginaDeDados">2. Página de Dados</h3>
+            <br>
+            <!-- 2.1 Download Template-->
+            <h5 id="subtituloDownloadTemplate">2.1 Download Template</h5>
+            <br />
+            <p class="text-justify">
+                A utilização da aplicação consiste em baixar o template no formato .xlsx, disponível para download ao clicar no botão "Download Template.xlsx".
+            </p>
+            <div>
+                <img src="~/images/Documentacao/BotaoDownloadTemplate.png" class="img-fluid rounded float-left mx-auto d-block" alt="Exemplo de uso da aplicação web para correção do fator de potência de um consumidor com geração fotovoltaica e banco de capacitores">
+            </div>
+            <br />
+            <p class="text-justify">
+                Será baixada a seguinte planilha:
+            </p>
+            <div>
+                <img src="~/images/Documentacao/TemplateVazio.png" class="img-fluid rounded float-left mx-auto d-block" alt="Exemplo de uso da aplicação web para correção do fator de potência de um consumidor com geração fotovoltaica e banco de capacitores">
+            </div>
+            <br />
+            <p class="text-justify">
+                @* Em seguida, preencha o template com as informações necessárias, que contém os seguintes campos: *@
+                As colunas são:
+                <ul style="list-style-type: circle;">
+                    <li class="ml-4" style="list-style: disc;"><strong>Data Início: </strong>Define a data de início da medição.</li>
+                    <li class="ml-4" style="list-style: disc;"><strong>Data Fim: </strong>Especifica a data de término da medição.</a></li>
+                    <li class="ml-4" style="list-style: disc;"><strong>Potência Reativa (kVAr): </strong>Potência reativa em kVAr, que pode ser positiva (indutiva) ou negativa (capacitiva).</a></li>
+                    <li class="ml-4" style="list-style: disc;"><strong>Potência Aparente (kVAr): </strong>Potência aparente em kVAr.</a></li>
+                    <li class="ml-4" style="list-style: disc;">
+                        <strong>FP: </strong>Refere-se ao Fator de Potência das medições, com valores entre 0 e 1. Seu valor é calculado automaticamente e se dá em função da Potência Reativa e Potência Aparente.
+                    </li>
+                    <li class="ml-4" style="list-style: disc;">
+                        <strong>Tipo de FP: </strong>Tipo de fator de potência.
+                        Este campo deverá ser preenchido com "Cap" para se referir a Capacitivo, ou "Ind" para se referir a Indutivo. Seu campo é preenchido
+                        automaticamente em função da coluna Potência Reativa,
+                        verificando seu sinal. Se a Potência Reativa for negativa
+                        seu valor será "Cap", para indicar Capacitivo, se a
+                        Potência Reativa for positiva, seu valor será "Ind",
+                        indicando Indutivo.
+                    </li>
+                </ul>
+            </p>
+            <p class="text-justify">
+                Cada coluna inclui uma anotação exemplificando o formato adequado para as células correspondentes. Para visualizar a anotação, basta passar o cursor do mouse sobre a célula, e ela será exibida automaticamente.
+            </p>
+            <div>
+                <img src="~/images/Documentacao/AnotacoesTemplate.png" class="img-fluid rounded float-left mx-auto d-block" alt="Exemplo de uso da aplicação web para correção do fator de potência de um consumidor com geração fotovoltaica e banco de capacitores">
+            </div>
+            <br />
+            <p class="text-justify">
+                Em seguida, preencha o template com as informações necessárias:
+            </p>
+            <div>
+                <img src="~/images/Documentacao/TemplateComMedicoes.png" class="img-fluid rounded float-left mx-auto d-block" alt="Exemplo de uso da aplicação web para correção do fator de potência de um consumidor com geração fotovoltaica e banco de capacitores">
+            </div>
+            <br />
+            <p class="text-justify">
+                <i class="fa-solid fa-circle-exclamation"></i><strong>
+                    Observações:
+                </strong>Os nomes das colunas do template não devem ser alterados e
+                devem ser mantidos na primeira linha do template.
+            </p>
+            <br />
+
+            <!-- 2.2 Upload Template-->
+            <h5 id="subtituloUploadTemplate">2.2 Upload Template</h5>
+            <br />
+            <p class="text-justify">
+                Após selecionar a planilha do template preenchida, o usuário poderá armazenar as informações
+                de forma permanente na aplicação clicando no botão “Upload Template.xlsx”.
+            </p>
+            <br />
+            <div>
+                <img src="~/images/Documentacao/PassosUploadTemplate.png" class="img-fluid rounded float-left mx-auto d-block" alt="Exemplo de uso da aplicação web para correção do fator de potência de um consumidor com geração fotovoltaica e banco de capacitores">
+            </div>
+            <br />
+            <!-- 2.3 Tabela de dados importados -->
+            <h5 id="subtituloTabelaDeDadosImportados">2.3 Tabela de Dados Importados</h5>
+            <br />
+            <p class="text-justify">
+                Com os dados armazenados de forma permanente, após o upload do template, serão exibidos os
+                dados em forma de tabela. Esta tabela contém todas as colunas do template, além de uma nova coluna
+                referente à potência ativa (Pot. Ativa), expressa em kW, calculada pela aplicação.
+            </p>
+            <div>
+                <img src="~/images/Documentacao/ResumoTabelaDadosImportados.png" class="img-fluid rounded float-left mx-auto d-block" alt="Exemplo de uso da aplicação web para correção do fator de potência de um consumidor com geração fotovoltaica e banco de capacitores">
+            </div>
+            <br />
+            <!-- 2.4 Tabela de dados importados -->
+            <h5 id="subtituloFiltro">2.4 Filtro</h5>
+            <br />
+            <p class="text-justify">
+                Todos os campos do filtro referem-se
+                às informações oriundas do upload do template, ou seja, aos dados importados pelo usuário.
+                Ao clicar no botão “Filtrar”, a consulta será realizada e o resultado será mostrado
+                na tabela de resultados. O botão “Limpar” apagará todos os campos de filtro,
+                deixando-os em branco.
+            </p>
+            <p class="text-justify">
+                O filtro da aplicação possui quatro campos para a busca de medições na tabela de resultados.:
+                <ul style="list-style-type: circle;">
+                    <li class="ml-4" style="list-style: disc;"><strong>Data Início: </strong>Define a data de início da medição.</li>
+                    <li class="ml-4" style="list-style: disc;"><strong>Data Fim: </strong>Especifica a data de término da medição.</a></li>
+                    <li class="ml-4" style="list-style: disc;"><strong>FP: </strong>Refere-se ao Fator de Potência das medições, com valores entre 0 e 1.</li>
+                    <li class="ml-4" style="list-style: disc;"><strong>Tipo de FP atual: </strong>Indica o tipo de fator de potência, que pode ser "Capacitivo", "Indutivo" ou "Todos" abrangendo tanto "Capacitivo" quanto "Indutivo".</li>
+                </ul>
+            </p>
+            <div>
+                <img src="~/images/Documentacao/Filtro.png" class="img-fluid rounded float-left mx-auto d-block" alt="Exemplo de uso da aplicação web para correção do fator de potência de um consumidor com geração fotovoltaica e banco de capacitores">
+            </div>
+            <br />
+            <!-- 2.5 Estratégia de compensação -->
+            <h5 id="subtituloEstrategiaDeCompensacao">2.5 Estratégia de Compensação</h5>
+            <br />
+            <p class="text-justify">
+                A estratégia de compensação envolve
+                técnicas e métodos para melhorar a eficiência energética de um sistema
+                elétrico.
+            </p>
+            <p class="text-justify">
+                O menu suspenso "Estratégia de compensação" possui seis estratégias, quais sejam:
+                <ul style="list-style-type: circle;">
+                    <li class="ml-4" style="list-style: disc;"><strong>Circular: </strong>O primeiro estágio ativado é o primeiro desativado.</li>
+                    <li class="ml-4" style="list-style: disc;"><strong>Linear: </strong>O primeiro estágio ativado é o último desativado.</a></li>
+                    <li class="ml-4" style="list-style: disc;"><strong>Manual: </strong>Necessita configurar manualmente o estágio que deve ser ativado ou desativado.</li>
+                    <li class="ml-4" style="list-style: disc;"><strong>Modo inteligente: </strong>Sua compensação ativa a combinação de estágios mais próxima da demanda medida.</li>
+                    <li class="ml-4" style="list-style: disc;"><strong>Sequencial Ascendente: </strong>Ativa ou desativa apenas um estágio por vez, começando pelo estágio com menor potência.</li>
+                    <li class="ml-4" style="list-style: disc;"><strong>Sequencial Descendente: </strong>Ativa ou desativa apenas um estágio por vez, começando pelo com maior potência.</li>
+                </ul>
+            </p>
+            <div>
+                <img src="~/images/Documentacao/EstrategiaDeCompensacao.png" class="img-fluid rounded float-left mx-auto d-block" alt="Exemplo de uso da aplicação web para correção do fator de potência de um consumidor com geração fotovoltaica e banco de capacitores">
+            </div>
+            <br />
+            <!-- 2.6 Tabela de dados importados -->
+            <h5 id="subtituloTabelaDeResultado">2.6 Tabela de Resultado</h5>
+            <br />
+            <p class="text-justify">
+                Após o upload do template e com as informações armazenadas,
+                a aplicação lerá cada registro e, com base nas configurações de parametrização
+                <a href="#tituloParametrizacao" class="text-dark">(2. Página de Configurações)</a>, identificará quantos registros terão fatura por
+                Energia Reativa Excedente (ERE).
+            </p>
+            <p class="text-justify">
+                Como auxílio, nos resultados serão exibidas quatro informações numéricas, que são:
+                <ul style="list-style-type: circle;">
+                    <li class="ml-4" style="list-style: disc;"><strong>Total de medições: </strong>Quantidade de medições inseridas pelo usuário para análise do fator de potência.</li>
+                    <li class="ml-4" style="list-style: disc;"><strong>Candidatos a ERE: </strong>Medições sujeitas a fatura por Energia Reativa Excedente (ERE), que compreendem valores de fator de potência inferiores a 0, 92 capacitivo entre 00h00 e 06h00 da manhã e inferiores a 0, 92 indutivo durantes as outras 18 horas do dia.</a></li>
+                    <li class="ml-4" style="list-style: disc;"><strong>FP corrigidos: </strong>Quantidade de medições que tiveram seus valores de fator de potência corrigidos, dadas as parametrizações configuradas, em relação ao total de medições analisadas.</li>
+                    <li class="ml-4" style="list-style: disc;"><strong>FP não corrigidos: </strong>Quantidade de medições que não tiveram seus valores de fator de potência corrigidos, dadas as parametrizações configuradas, em relação ao total de medições analisadas.</li>
+                </ul>
+            </p>
+            <div>
+                <img src="~/images/Documentacao/ResultadoNumerico.png" class="img-fluid rounded float-left mx-auto d-block" alt="Exemplo de uso da aplicação web para correção do fator de potência de um consumidor com geração fotovoltaica e banco de capacitores">
+            </div>
+            <br />
+            <p class="text-justify">
+                A tabela de resultado exibirá os estágios que serão utilizados
+                para cada registro identificado a fatura por Energia Reativa Excedente (ERE), e
+                de acordo com a estratégia
+                de compensação definida, mostrará o fator de potência resultante
+                após a aplicação desses estágios.
+                A tabela de resultado compreende as seguintes colunas:
+                <ul style="list-style-type: circle;">
+                    <li class="ml-4" style="list-style: disc;"><strong>Data Início: </strong>Data de início da medição, dado importado.</li>
+                    <li class="ml-4" style="list-style: disc;"><strong>Data Fim: </strong>Data de término da medição, dado importado.</a></li>
+                    <li class="ml-4" style="list-style: disc;"><strong>FP atual: </strong>Fator de potência atual do usuário, dado importado.</li>
+                    <li class="ml-4" style="list-style: disc;"><strong>Tipo de FP atual: </strong>Tipo de fator de potência atual do usuário, dado importado.</li>
+                    <li class="ml-4" style="list-style: disc;"><strong>Ação: </strong>Diz respeito à operação necessária de ativar ou desativar estágio(s) para corrigir o valor de potência atual até o valor desejado (0,92).</li>
+                    <li class="ml-4" style="list-style: disc;">
+                        <strong>Qc Necessário (kVAr): </strong>Diz respeito à potnência necessária para corrigido o fator de potência desejado (0,92).
+                    </li>
+                    <li class="ml-4" style="list-style: disc;">
+                        <strong>Estágios (kVAr): </strong>São os Estágios ativos para correção do fator de potência, escolhido(s) pela aplicação, após avaliar as configurações determinadas pelo usuário.
+                        Seguido ao valor da potência há uma anotação que pode ser [F] para indicar que a potência reativa é oriunda de Banco Fixo ou [A] para indicar que a potência reativa é oriunda do Banco Automático.
+                    </li>
+                    <li class="ml-4" style="list-style: disc;"><strong>FP Corrigido: </strong>Indica se o fator de potência foi ajustado após a ativação ou desativação de estágios. Se as configurações não permitirem a correção do fator de potência, as linhas serão destacadas com um fundo rosa.</li>
+                    <li class="ml-4" style="list-style: disc;"><strong>Tipo de FP Corrigido: </strong>Tipo do Fator de Potência após a ativação ou desativação de estágios: "Ind" para indutivo e "Cap" para capacitivo.</li>
+                </ul>
+            </p>
+            <div>
+                <img src="~/images/Documentacao/ResumoTabelaResultado.png" class="img-fluid rounded float-left mx-auto d-block" alt="Exemplo de uso da aplicação web para correção do fator de potência de um consumidor com geração fotovoltaica e banco de capacitores">
+            </div>
+            <br />
+            <br>
+            <!-- 2.7 Video Explicativo -->
+            <h5 id="subtituloVideoExplicativoPaginaDados">2.7 Video Explicativo</h5>
+            <br />
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/FjJGTJZA-G0?rel=0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <br>
+            <!-- 3. Página de Configurações -->
+            <h3 class="offset" id="tituloParametrizacao">3. Página de Configurações</h3>
+            <br>
+            <!-- 3.1 Esquema de Ligação das Entradas -->
+            <h5 id="subtituloEsquemaLigacaoDasEntradas">3.1 Esquema de Ligação das Entradas</h5>
+            <br />
+            <p class="text-justify">
+                A seção de “Esquema de Ligação das Entradas” inclui campos editáveis para “Tensão de Linha” (em Volts) e
+                “Relação TC” (transformador de corrente). A sensibilidade do controlador do fator de potência, 
+                representada por C/k, é um campo não editável calculado com base na “Tensão de Linha”, “Relação TC”
+                e na menor potência entre os estágios (fixo ou automático). Este valor pode ser visualizado no campo “Relação C/k”.
+            </p>
+            <p class="text-justify">
+                A saber, o valor C/k é normalmente, ajustado para 2/3 da
+                corrente do primeiro estágio do capacitor. Ele representa o valor limite da corrente para o controlador de fator
+                de potência ativar ou desativar um estágio.
+            </p>
+            <di>
+                <img src="~/images/Documentacao/EsquemaDeLigacaoDasEntradas.png" class="img-fluid rounded float-left mx-auto d-block w-100" alt="Exemplo de uso da aplicação web para correção do fator de potência de um consumidor com geração fotovoltaica e banco de capacitores">
+            </di>
+            <br />
+            <!-- 3.2 Bancos Fixos -->
+            <h5 id="subtituloBancosFixos">3.2 Bancos Fixos</h5>
+            <br />
+            <p class="text-justify">
+                Na seção “Bancos Fixos”, há um seletor chamado “Quantidade” para selecionar até quatro estágios do banco fixo e seus respectivos valores,
+                em kVAr, e com a opção “Nenhum estágio” caso não seja necessário configurar.
+            </p>
+            <div>
+                <img src="~/images/Documentacao/BancosFixosNenhumEstagio.png" class="img-fluid rounded float-left mx-auto d-block" alt="Exemplo de nenhum estágio para bancos fixos">
+            </div>
+            <br />
+            <p class="text-justify">
+                Abaixo, exemplifica um banco fixo com quatro estágios. O menu suspenso "Estágio" possui as seguintes opções pré-definidas:
+                0,5 kVAr, 0,75 kVAr, 1,0 kVAr, 1,5 kVAr, 2,0 kVAr, 2,5 kVAr, 3,0 kVAr, 5,0 kVAr, 7,5 kVAr, 10,0 kVAr, 12,0 kVAr, 15,0 kVAr, 17,0 kVAr, 20,0 kVAr, 25,0 kVAr e 30,0 kVAr.
+            </p>
+            <div>
+                <img src="~/images/Documentacao/BancosFixosQuatroEstagios.png" class="img-fluid rounded float-left mx-auto d-block" alt="Exemplo de quatro estágios para bancos fixos">
+            </div>
+            <br>
+            <!-- 3.3 Bancos Automáticos -->
+            <h5 id="subtituloBancosAutomaticos">3.3 Bancos Automáticos</h5>
+            <br />
+            <p class="text-justify">
+                Na seção “Bancos Automáticos”, há um seletor chamado “Quantidade” para selecionar até vinte e quatro estágios do banco automático e seus respectivos valores,
+                em kVAr, e com a opção “Nenhum estágio” caso não seja necessário configurar.
+            </p>
+            <div>
+                <img src="~/images/Documentacao/BancosAutomaticosNenhumEstagio.png" class="img-fluid rounded float-left mx-auto d-block" alt="Exemplo de nenhum estágio para bancos automáticos">
+            </div>
+            <br>
+            <p class="text-justify">
+                Abaixo, exemplifica um banco automático com doze estágios. O menu suspenso "Estágio" possui as seguintes opções pré-definidas:
+                0,5 kVAr, 0,75 kVAr, 1,0 kVAr, 1,5 kVAr, 2,0 kVAr, 2,5 kVAr, 3,0 kVAr, 5,0 kVAr, 7,5 kVAr, 10,0 kVAr, 12,0 kVAr, 15,0 kVAr, 17,0 kVAr, 20,0 kVAr, 25,0 kVAr e 30,0 kVAr.
+            </p>
+            <div>
+                <img src="~/images/Documentacao/BancosAutomaticosDozeEstagios.png" class="img-fluid rounded float-left mx-auto d-block" alt="Exemplo de doze estágios para bancos automáticos">
+            </div>
+            <br>
+            <!-- 3.4 Video Explicativo -->
+            <h5 id="subtituloVideoExplicativoPaginaConfiguracoes">3.4 Video Explicativo</h5>
+            <br />
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/SwqLY-7egX8?rel=0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <br>
+            <!-- 4. Referências -->
+            <h3 class="offset" id="tituloReferencias">4. Referências</h3>
+            <ul class="list-group custom-list">
+                1 - Fator de Potência:
+                <li class="ml-4">
+                    FILHO, J. M. Instalações Elétrica
+                    Industriais. 9. ed., São Paulo: LTC, 2017.
+                    FRANCHI, C. M. Acionamentos
+                    Elétricos. São Paulo: Saraiva, 2014.
+                </li>
+                <li class="ml-4">
+                    CREDER, H. Instalações Elétrica. 15. ed., Rio de Janeiro: LTC, 2012.
+                </li>
+                <br />
+                2 - Considerações básicas sobre a legislação do fator de potência:
+                <li class="ml-4">
+                    ANEEL. AGÊNCIA NACIONAL DE ENERGIA ELÉTRICA. Resolução Normativa Nº 1.000
+                    ANEEL, de 7 de dezembro, de 2021. Disponível em:
+                    <a href="https://www2.aneel.gov.br/cedoc/ren20211000.html" class="text-dark" target="_blank">
+                        &lthttps://www2.aneel.gov.br/cedoc/ren20211000.html&gt
+                    </a>.
+                </li>
+                <br />
+                3 - Faturamento de energia reativa excedente:
+                <li class="ml-4">
+                    ANEEL. AGÊNCIA NACIONAL DE ENERGIA ELÉTRICA. Resolução Normativa Nº 1.000
+                    ANEEL, de 7 de dezembro, de 2021. Disponível em:
+                    <a href="https://www2.aneel.gov.br/cedoc/ren20211000.html" class="text-dark" target="_blank">
+                        &lthttps://www2.aneel.gov.br/cedoc/ren20211000.html&gt
+                    </a>.
+                </li>
+                <br />
+                4 - Correção do fator de potência:
+                <li class="ml-4">
+                    FEIS. Correção do Fator de Potência em Sistemas Industriais. Disponível em:
+                    <a href="https://www.feis.unesp.br/Home/departamentos/engenhariaeletrica/capitulo_4_2013-1s_2.pdf" class="text-dark" target="_blank">
+                        &lthttps://www.feis.unesp.br/Home/departamentos/engenhariaeletrica/capitulo_4_2013-1s_2.pdf&gt;
+                    </a>.
+                </li>
+                <li class="ml-4">
+                    WEG. Manual para Correção do Fator de Potência. Disponível em:
+                    <a href="http://paginapessoal.utfpr.edu.br/erley/inst.-industriais-1/fator-de-potencia-em-instalacoes-industriais/materiais-de-apoio/WEG-correcao-do-fator-de-potencia-manual-portugues-br.pdf/at_download/file" class="text-dark" target="_blank">
+                        &lthttp://paginapessoal.utfpr.edu.br/erley/inst.-industriais-1/fator-de-potencia-em
+                        instalacoes-industriais/materiais-de-apoio/WEG-correcao-do-fator-de-potencia
+                        manual-portugues-br.pdf/view&gt;
+                    </a>.
+                </li>
+                <li class="ml-4">
+                    COTRIM, Ademaro Alberto Machado
+                    Bittencourt. Instalações Elétricas:.5ª.ed.
+                    São Paulo: Pearson Prentice Hall, 2009.
+                </li>
+                <br />
+                5 -  Fator de sensibilidade (C/K):
+                <li class="ml-4">
+                    WEG. Guia de configuração PFW03-M12-24. Disponível em:
+                    <a href="https://static.weg.net/medias/downloadcenter/hc9/h1a/WEG-guia-de-configuracao-PFW03-M12-24-pt.pdf" class="text-dark" target="_blank">
+                        &lthttps://static.weg.net/medias/downloadcenter/hc9/h1a/WEG-guia-de-configuracao-PFW03-M12-24-pt.pdf&gt;
+                    </a>.
+                </li>
+                <li class="ml-4">
+                    RVC. PowerIT Controladores de Fator de Potência - RVC. Disponível em:
+                    <a href="https://www.coisarada.net/assets/uploads/dc562-rvc-pt.pdf" class="text-dark" target="_blank">
+                        &lthttps://www.coisarada.net/assets/uploads/dc562-rvc-pt.pdf&gt;
+                    </a>.
+                </li>
+                <br />
+                6 - Compensação de reativos em sistemas distribuídos:
+                <li class="ml-4">
+                    TAVEIRA, Isabela Maciel. A influência da geração fotovoltaica no fator de potência
+                    de unidades prossumidoras: uma avaliação técnica e financeira. Disponível em:
+                    <a href="https://repositorio.ufc.br/bitstream/riufc/45193/1/2019_tcc_imtaveira.pdf" class="text-dark" target="_blank">
+                        &lthttps: //repositorio.ufc.br/bitstream/riufc/45193/1/2019_tcc_imtaveira.pdf&gt;
+                    </a>.
+                </li>
+                <li class="ml-4">
+                    PINTO, A., ZILLES, R., BET, I. Excedente de reativos em sistemas fotovoltaicos
+                    conectados à rede, 2012. Disponível em:
+                    <a href="https://anaiscbens.emnuvens.com.br/cbens/article/view/2006/1990" class="text-dark" target="_blank">
+                        <br />&lthttps: //anaiscbens.emnuvens.com.br/cbens/article/view/2006/1990&gt;
+                    </a>.
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+</div>
