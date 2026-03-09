@@ -296,7 +296,7 @@ git clone https://github.com/renanegobbi/power-factor-correction-simulator.git
 cd power-factor-correction-simulator
 ```
 
-## 4.2. Running the Application
+## 4.2 Running the Application
 
 After cloning the repository and accessing the project root folder as described in **4.1** and **4.1.1**, there are three ways to run the application:
 
