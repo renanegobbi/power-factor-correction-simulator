@@ -276,7 +276,7 @@ This page explains:
 
 ---
 
-# 4. How to Use
+# 4. How to run
 
 ### 4.1 Clone the Repository
 
