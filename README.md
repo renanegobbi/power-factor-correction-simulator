@@ -28,6 +28,12 @@ DOI: https://doi.org/10.36524/ric.v10i1.2787
 🔗 Access the full article:  
 https://ojs.ifes.edu.br/index.php/ric/article/view/2787/1258
 
+## 💾 Software DOI
+
+This software is archived and available at:
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19164353.svg)](https://doi.org/10.5281/zenodo.19164353)
+
 
 ## 💻 Software Registration
 
