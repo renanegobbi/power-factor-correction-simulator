@@ -28,6 +28,12 @@ DOI: https://doi.org/10.36524/ric.v10i1.2787
 🔗 Acesse o artigo completo:  
 https://ojs.ifes.edu.br/index.php/ric/article/view/2787/1258
 
+## 💾 DOI do Software
+
+Este software está arquivado e disponível em:
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19164353.svg)](https://doi.org/10.5281/zenodo.19164353)
+
 ## 💻 Registro de Software
 
 Este software possui registro no **Instituto Nacional da Propriedade Industrial (INPI)**.
