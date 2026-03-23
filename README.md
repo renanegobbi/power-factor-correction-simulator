@@ -23,10 +23,13 @@ GOBBI, R. E.; SOUZA, M. R.; SILVA, D. P.
 **Aplicação web para correção do fator de potência de um consumidor com geração fotovoltaica e banco de capacitores.**  
 Revista Ifes Ciência, v. 10, n. 1, p. 01–25, 2023.
 
-DOI: https://doi.org/10.36524/ric.v10i1.2787
+[![DOI](https://img.shields.io/badge/DOI-10.36524%2Fric.v10i1.2787-blue)](https://doi.org/10.36524/ric.v10i1.2787)
 
 🔗 Access the full article:  
-https://ojs.ifes.edu.br/index.php/ric/article/view/2787/1258
+
+👉 Click the button below to open the article:
+
+[![Article](https://img.shields.io/badge/Full%20Article-Access-green)](https://ojs.ifes.edu.br/index.php/ric/article/view/2787/1258)
 
 ## 💾 Software DOI
 
